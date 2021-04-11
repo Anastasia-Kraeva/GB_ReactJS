@@ -1,0 +1,29 @@
+$light_blue: rgb(201, 223, 233);
+$blue: rgb(111, 148, 204);
+
+h1 {
+    color: $blue;
+    text-align: center;
+}
+
+.message {
+    margin: 20px 0;
+    border: 1px solid $blue;
+    border-radius: 15px;
+    padding: 0 10px;
+    p {
+        margin: 6px;
+    }
+}
+
+.my_message {
+    background-color: $light_blue;
+}
+
+.chat_box {
+    display: flex;
+    ul {
+        display: inline-block;
+        width: 30%;
+    }
+}
