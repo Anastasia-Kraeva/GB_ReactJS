@@ -1,13 +1,14 @@
 import React from "react";
 
 let Message = props => {
-console.log(props);
   return (
-    <div>
+    <div >
+    <div className={props.class}>
       <p>
       <span>{props.sender}</span><br/>
       {props.text}
       </p>
+    </div>
     </div>
   );
 }
