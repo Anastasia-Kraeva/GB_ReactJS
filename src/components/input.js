@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {AUTORS} from "../utils/constans";
 import {TextField, Button} from "@material-ui/core";
 
-export default function Input({onAddMessage}) {
+export function Input({onAddMessage}) {
     const [value, setValue] = useState('');
 
     const handleChange = (e) => {
