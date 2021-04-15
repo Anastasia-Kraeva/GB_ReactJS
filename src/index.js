@@ -1,14 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/app';
 
-import {script} from './script';
-
-script();
-console.log('Hello World!');
-
-const element = <h1 className="element">подключили реакт</h1>;
-
-ReactDOM.render(
-    element,
+ReactDOM.render(<App />,
     document.getElementById('app')
 )
