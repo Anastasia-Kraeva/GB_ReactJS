@@ -1,24 +1,39 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import {List, ListItem, ListItemAvatar, Avatar, FolderIcon, ListItemText} from '@material-ui/core';
 
-export default function ChatList(props) {
+const chats = [
+  {
+    id: 1,
+    name: "Chat1",
+  },
+  {
+    id: 2,
+    name: "Chat2",
+  },
+  {
+    id: 3,
+    name: "Chat3",
+  },
+];
+
+export function ChatList() {
   return (
-    // <List dense={dense}>
     <List>
-      {/* {generate( */}
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              {/* <FolderIcon /> */}
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText
-            primary="Single-line item"
-            // secondary={secondary ? 'Secondary text' : null}
-            secondary={'Secondary text'}
-          />
-        </ListItem>
-      {/* )} */}
+      {chats.map((chat) => (
+        <Link to={`/chats/${chat.id}`}>
+          <ListItem>
+            <ListItemAvatar>
+              <Avatar>
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText
+              primary={chat.name}
+              secondary={'Secondary text'}
+            />
+          </ListItem>
+        </Link>
+      ))}
     </List>
-  )
+  );
 }
