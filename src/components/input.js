@@ -23,7 +23,6 @@ export function Input({onAddMessage}) {
         <form onSubmit={handleSubmit}>
             <TextField value={value} onChange={handleChange}/>
             <Button color="primary" type="submit">Отправить</Button>
-            {/* <input type="submit" /> */}
         </form>
     )
 }

@@ -3,6 +3,8 @@ import React from 'react';
 // import App from './app';
 // import Header from './header';
 
+// import { useSelector, useDispatch, connect} from "react-redux";
+
 
 export function Profile() {
   return (

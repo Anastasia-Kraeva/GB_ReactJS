@@ -17,7 +17,7 @@ const chats = [
   },
 ];
 
-export default function ChatList() {
+export function ChatList() {
   return (
     <List>
       {chats.map((chat) => (
@@ -37,28 +37,3 @@ export default function ChatList() {
     </List>
   );
 }
-
-  // return (
-  //   // <List dense={dense}>
-  //   <List>
-  //     {/* {generate( */}
-  //     {chats.map((chat) => {
-  //       <Link to={`/chats/${chat.id}`}>
-  //         <ListItem>
-  //           <ListItemAvatar>
-  //             <Avatar>
-  //               {/* <FolderIcon /> */}
-  //             </Avatar>
-  //           </ListItemAvatar>
-  //           <ListItemText
-  //             // primary="Single-line item"
-  //             primary={chat.name}
-  //             // secondary={secondary ? 'Secondary text' : null}
-  //             secondary={'Secondary text'}
-  //           />
-  //         </ListItem>
-  //       </Link>
-  //     })}
-  //     {/* )} */}
-  //   </List>
-  // )

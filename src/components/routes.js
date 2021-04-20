@@ -5,8 +5,8 @@ import {
     Route
 } from "react-router-dom";
 import {Home} from './home';
-import ChatList from './chatList';
-import {App} from './app';
+import {ChatList} from './chatList';
+import {MessageField} from './messagefield';
 import {Profile} from './profile';
   
 export const Routes = () => (
@@ -19,7 +19,7 @@ export const Routes = () => (
                 <ChatList />
             </Route>
             <Route path="/chats/:chatId">
-                <App />
+                <MessageField />
             </Route>
             <Route exact path="/profile">
                 <Profile />

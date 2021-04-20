@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from "@material-ui/core";
+import {useSelector} from "react-redux";
 
-export default function Header() {
+export function Header() {
+    const name = useSelector(state => state.profile.name);
+
     return (
         <>
-            <Link to="/profile">Мой профиль</Link>
+            <Link to="/profile">Мой профиль: {name}</Link>
             <h1>Чат</h1>
         </>
     )
 }
-//почему Link не меняет путь?
