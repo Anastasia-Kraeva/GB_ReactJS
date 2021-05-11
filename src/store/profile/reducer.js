@@ -1,7 +1,7 @@
 import {CHANGE_NAME} from "./types"
 
 const initialState = {
-    name: "default name",
+    name: "айтишник",
 }
 
 export const profileReducer = (state = initialState, action) => {

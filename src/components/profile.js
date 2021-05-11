@@ -10,4 +10,4 @@ export function Profile() {
   return (
     <p>(*-*)</p>
   )
-}
+}//посмотреть у препода

@@ -5,7 +5,7 @@ import {
     Route
 } from "react-router-dom";
 import {Home} from './home';
-import {ChatList} from './chatList';
+import ChatList from './chatList';
 import {MessageField} from './messagefield';
 import {Profile} from './profile';
   

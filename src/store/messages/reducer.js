@@ -1,13 +1,12 @@
 import {ADD_MESSAGE} from "./types"
 
 const initialState = {
-    message: [
-        {
-            sender: "bot", 
-            text: "Привет", 
-            id:'0-0'
-        },
-    ],
+    messages: {
+        '0': [
+            {sender: "bot", text: "Привет", id:'0-0'}, 
+            {sender: "bot", text: "Как дела?", id:'0-1'},
+        ],
+    }
 }
 
 export const messageReducer = (state = initialState, action) => {
@@ -15,12 +14,14 @@ export const messageReducer = (state = initialState, action) => {
         case ADD_MESSAGE: {
             return {
                 ...state,
-                message: [
-                    ...state.chats.chatId, 
-                    {sender: actions.payload, text: actions.value, id: (state.chats.chatId.length + 1)},
-                ],
+                messages: {
+                    ...state.messages,
+                    [action.chatId]: [
+                        ...(state.messages[`${action.chatId}`] || []),
+                        action.newMessage,
+                    ],
+                }
             }
-
         }
         default:
             return state;

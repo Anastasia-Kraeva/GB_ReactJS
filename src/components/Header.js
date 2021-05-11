@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from "@material-ui/core";
 import {useSelector} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 export function Header() {
     const name = useSelector(state => state.profile.name);
+    const history = useHistory();
 
     return (
         <>
-            <Link to="/profile">Мой профиль: {name}</Link>
+            <a onClick={() => {history.push("/profile");}}>Мой профиль: {name}</a>
             <h1>Чат</h1>
         </>
     )
