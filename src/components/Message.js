@@ -1,6 +1,6 @@
 import React from "react";
 
-let Message = props => {
+const Message = props => {
   return (
     <div >
     <div className={props.class}>

@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
 import {AUTORS} from "../utils/constans";
 import {TextField, Button} from "@material-ui/core";
+import {useSelector, useDispatch} from "react-redux";
+import { selectMessages } from "../store/messages/selectors";
 
-export default function Input({onAddMessage}) {
+export function Input(chatObj) {
+    const chatId = chatObj.chatId - 1;
     const [value, setValue] = useState('');
+    const messages = useSelector(selectMessages);
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setValue(e.target.value);
@@ -11,10 +16,15 @@ export default function Input({onAddMessage}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onAddMessage({
-            sender: AUTORS.ME, 
-            text: value,
-            id: null,
+        
+        dispatch({
+            type: "MESSAGE::ADD_MESSAGE",
+            chatId: chatId,
+            newMessage: {
+                sender: AUTORS.ME, 
+                text: value,
+                id: chatId + "-" + (messages[+chatId] || []).length,
+            },
         });
         setValue('');
     }
@@ -23,7 +33,6 @@ export default function Input({onAddMessage}) {
         <form onSubmit={handleSubmit}>
             <TextField value={value} onChange={handleChange}/>
             <Button color="primary" type="submit">Отправить</Button>
-            {/* <input type="submit" /> */}
         </form>
     )
 }

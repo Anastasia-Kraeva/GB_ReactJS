@@ -1,24 +1,49 @@
-import React from 'react';
-import {List, ListItem, ListItemAvatar, Avatar, FolderIcon, ListItemText} from '@material-ui/core';
+import React, {useState} from 'react';
+import {useHistory} from "react-router-dom";
+import {List, ListItem, ListItemAvatar, Avatar} from '@material-ui/core';
+import {useSelector, useDispatch} from "react-redux";
+import { selectChats } from "../store/chats/selectors";
+import { addChat } from "../store/chats/actions";
 
-export default function ChatList(props) {
+export default function ChatList() {
+  const history = useHistory();
+  const state = useSelector(state => state.chats);
+  const [chatName, setChatName] = useState('');
+  const chats = useSelector(selectChats);
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setChatName(e.target.value);
+  };
+
+  const addNewChat = () => {
+    dispatch(addChat(chatName));
+    setChatName('');
+  }
+
   return (
-    // <List dense={dense}>
-    <List>
-      {/* {generate( */}
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar>
-              {/* <FolderIcon /> */}
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText
-            primary="Single-line item"
-            // secondary={secondary ? 'Secondary text' : null}
-            secondary={'Secondary text'}
-          />
-        </ListItem>
-      {/* )} */}
-    </List>
-  )
+    <div>
+      <List>
+        {chats.map((chat) => (
+          <ListItem 
+          key={chat.id} 
+          id={chat.id}  
+          className={`chats-item ${chat.id == state.idToBlink ? 'blink' : 'no-blink'}`} 
+          onClick={() => {history.push(`/chats/${chat.id}`);}}>
+            <ListItemAvatar>
+              <Avatar>
+              </Avatar>
+            </ListItemAvatar>
+            <a>
+            {chat.name}
+            </a>
+          </ListItem>
+        ))}
+      </List>
+      <input type="text" value={chatName} onChange={handleChange} style={{'display': 'block'}}/>
+      <br/>
+      <br/>
+      <button onClick={addNewChat}>Add Chat</button>
+    </div>
+  );
 }
